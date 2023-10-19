@@ -17,6 +17,10 @@ composer require saade/filament-extra
   - [Forms](#forms)
     - [Relation Manager](#relation-manager)
     - [ColorSelect](#colorselect)
+  - [Concerns](#concerns)
+    - [trait HasSoftDeletedRecords](#trait-hassoftdeletedrecords)
+    - [trait NavigationGroupAwareBreadcrumbs](#trait-navigationgroupawarebreadcrumbs)
+    - [trait HasParentResource](#trait-hasparentresource)
   - [Support](#support)
     - [class Color](#class-color)
     - [function color](#function-color)
@@ -49,6 +53,89 @@ This field lets you pick a Filament color from your application.
 use Saade\FilamentExtra\Forms\Components\ColorSelect;
 
 ColorSelect::make('color')
+```
+
+## Concerns
+
+### trait HasSoftDeletedRecords
+Tired of overriding the `getEloquentQuery` method in every resource? This trait will handle soft deletes for you.
+
+```php
+use Filament\Resources\Resource;
+
+use Saade\FilamentExtra\Concerns\HasSoftDeletedRecords;
+
+class YourResource extends Resource
+{
+    use HasSoftDeletedRecords;
+}
+```
+
+### trait NavigationGroupAwareBreadcrumbs
+This trait will handle breadcrumbs for you. It's useful if you need to render breadcrumbs for a resource that belongs to a navigation group.
+
+```php
+use Filament\Resources\Pages\CreateRecord;
+
+use Saade\FilamentExtra\Concerns\NavigationGroupAwareBreadcrumbs;
+
+class CreateYourRecord extends CreateRecord
+{
+    use NavigationGroupAwareBreadcrumbs;
+}
+```
+
+### trait HasParentResource
+This trait will handle nested resources for you.
+
+1. Add the `$parentResource` property to your child resource.
+```php
+use Filament\Resources\Resource;
+
+class ChildResource extends Resource
+{
+    public static ?string $parentResource = ParentResource::class;
+}
+```
+
+2. Add the child resource pages to the parent resource.
+```php
+use Filament\Resources\Resource;
+
+class ParentResource extends Resource
+{
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ManageParents::route('/'),
+            'edit' => Pages\EditParent::route('/{record}/edit'),
+
+            // Please note that 'child' can be anything you want. It defaults to the resource slug.
+            // If you want to change it, you need to override the $pageNamePrefix property on the child resource pages.
+            'child.index' => ChildResource\Pages\ListChildren::route('/{parent}/children'),
+            'child.create' => ChildResource\Pages\CreateChild::route('{parent}/children/create'),
+            'child.edit' => ChildResource\Pages\EditChild::route('{parent}/children/{record}/edit'),
+        ];
+    }
+}
+```
+
+3. Add the trait to your child resource pages.
+```php
+use Filament\Resources\Pages\ListRecords;
+
+use Saade\FilamentExtra\Concerns\HasParentResource;
+
+class ListChildren extends ListRecords
+{
+    use HasParentResource;
+
+    // (optional) Define custom relationship key (if it does not match the table name pattern).
+    protected ?string $relationshipKey = 'parent_id';
+
+    // (optional) Define custom child page name prefix for child pages (if it does not match the parent resource slug).
+    protected ?string $pageNamePrefix = 'child';
+}
 ```
 
 ## Support
