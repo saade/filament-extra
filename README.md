@@ -1,13 +1,9 @@
-# A set of reusable Filament helpers, columns, fields, actions and more!
+# Filament Extra
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/saade/filament-extra.svg?style=flat-square)](https://packagist.org/packages/saade/filament-extra)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/saade/filament-extra/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/saade/filament-extra/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/saade/filament-extra/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/saade/filament-extra/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/saade/filament-extra.svg?style=flat-square)](https://packagist.org/packages/saade/filament-extra)
 
-
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+A set of reusable Filament helpers, columns, fields, actions and more!
 
 ## Installation
 
@@ -16,44 +12,27 @@ You can install the package via composer:
 ```bash
 composer require saade/filament-extra
 ```
+- [Filament Extra](#filament-extra)
+  - [Installation](#installation)
+  - [Forms](#forms)
+    - [Relation Manager](#relation-manager)
+  - [Changelog](#changelog)
+  - [Contributing](#contributing)
+  - [Security Vulnerabilities](#security-vulnerabilities)
+  - [Credits](#credits)
+  - [License](#license)
 
-You can publish and run the migrations with:
+## Forms
 
-```bash
-php artisan vendor:publish --tag="filament-extra-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="filament-extra-config"
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="filament-extra-views"
-```
-
-This is the contents of the published config file:
+### Relation Manager
+This field lets you render a [Relation Manager]() inside a form. It's useful if you need to render it inside a tab or a modal.
 
 ```php
-return [
-];
-```
+use Saade\FilamentExtra\Forms\Components\RelationManager;
+use App\Filament\Resources\YourResource\RelationManagers\YourRelationManager;
 
-## Usage
-
-```php
-$filamentExtra = new Saade\FilamentExtra();
-echo $filamentExtra->echoPhrase('Hello, Saade!');
-```
-
-## Testing
-
-```bash
-composer test
+RelationManager::make(YourRelationManager::class)
+    ->lazy(bool $lazy = true)
 ```
 
 ## Changelog
