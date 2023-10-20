@@ -86,7 +86,7 @@ class CreateYourRecord extends CreateRecord
 ```
 
 ### trait HasParentResource
-This trait will handle nested resources for you.
+This trait will handle nested resources for you. [Read the blog post](https://laraveldaily.com/post/filament-nested-resources-courses-lessons) if you want to know more. This code was partially taken from [LaravelDaily/filament-nested-resources](https://github.com/LaravelDaily/filament-nested-resources) and contributed back to the community.
 
 1. Add the `$parentResource` property to your child resource.
 ```php
@@ -225,7 +225,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Saade](https://github.com/saade)
-- [ModestasV](https://github.com/LaravelDaily/filament-nested-resources) For the nested resource implementation.
+- [LaravelDaily](https://github.com/LaravelDaily/filament-nested-resources) For the nested resource implementation.
 - [All Contributors](../../contributors)
 
 ## License
