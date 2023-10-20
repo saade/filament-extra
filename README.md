@@ -225,6 +225,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Saade](https://github.com/saade)
+- [ModestasV](https://github.com/LaravelDaily/filament-nested-resources) For the nested resource implementation.
 - [All Contributors](../../contributors)
 
 ## License
