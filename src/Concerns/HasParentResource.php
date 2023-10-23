@@ -41,7 +41,8 @@ trait HasParentResource
 
     protected function applyFiltersToTableQuery(Builder $query): Builder
     {
-        return $query->where($this->getParentRelationshipKey(), $this->parentRecord->getKey());
+        return parent::applyFiltersToTableQuery($query)
+            ->where($this->getParentRelationshipKey(), $this->parentRecord->getKey());
     }
 
     public function getParentRelationshipKey(): string
