@@ -10,7 +10,7 @@ if (! function_exists('Saade\FilamentExtra\Support\color')) {
 }
 
 if (! function_exists('Saade\FilamentExtra\Support\html')) {
-    function html(string $html = null): ?\Illuminate\Support\HtmlString
+    function html(?string $html = null): ?\Illuminate\Support\HtmlString
     {
         if (! $html) {
             return null;
@@ -21,7 +21,7 @@ if (! function_exists('Saade\FilamentExtra\Support\html')) {
 }
 
 if (! function_exists('Saade\FilamentExtra\Support\md')) {
-    function md(string $string = null): ?\Illuminate\Support\HtmlString
+    function md(?string $string = null): ?\Illuminate\Support\HtmlString
     {
         if (! $string) {
             return null;
@@ -32,7 +32,7 @@ if (! function_exists('Saade\FilamentExtra\Support\md')) {
 }
 
 if (! function_exists('Saade\FilamentExtra\Support\blade')) {
-    function blade(string $string = null, array $data = [], bool $deleteCachedView = false): ?string
+    function blade(?string $string = null, array $data = [], bool $deleteCachedView = false): ?string
     {
         if (! $string) {
             return null;
