@@ -2,6 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/saade/filament-extra.svg?style=flat-square)](https://packagist.org/packages/saade/filament-extra)
 [![Total Downloads](https://img.shields.io/packagist/dt/saade/filament-extra.svg?style=flat-square)](https://packagist.org/packages/saade/filament-extra)
+[![Plumb score](https://plumbphp.dev/badges/saade/filament-extra/composite.svg)](https://plumbphp.dev/saade/filament-extra)
 
 A set of reusable Filament helpers, columns, fields, actions and more!
 
